@@ -7,7 +7,7 @@ from handlers import callbacks, commands, messages
 from utils.middleware import UserMiddleware
 from database.database import create_db
 
-# Изменеие тип
+# Изменеие 1111111111111
 # Настройка логирования
 logging.basicConfig(
     level=logging.DEBUG,

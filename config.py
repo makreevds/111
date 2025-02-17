@@ -1,1 +1,1 @@
-TOKEN = "7562026606:AAFArckAWHdVfE1fZVpn6FVxq0Yx2w70slQ"  # Вставь свой токен
+TOKEN = "7562026606:AAFArckAWHdVfE1fZVpn6FVxq0Yx2w70slQ"  # Токен бота
