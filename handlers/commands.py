@@ -16,7 +16,8 @@ command_descriptions = {
 
 @router.message(Command("start"))
 async def start_command(message: Message):
-    await message.answer("Привет! Я твой бот 🚀\nИспользуй /help для списка команд.")
+    await message.answer("Привет! Я твой бот 🚀\nИспользуй /help для списка команд.",
+                         reply_markup=main_keyboard())
 
 @router.message(Command("help"))
 async def help_command(message: Message):

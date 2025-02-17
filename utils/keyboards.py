@@ -8,3 +8,13 @@ def get_inline_keyboard():
         ]
     )
     return keyboard
+
+def main_keyboard():
+    keyboard = InlineKeyboardMarkup(
+        inline_keyboard=[
+            [InlineKeyboardButton(text="Мои финансы", callback_data="my_finances")],
+            [InlineKeyboardButton(text="пустышка", callback_data="dummy_1")],
+            [InlineKeyboardButton(text="пустышка", callback_data="dummy_2")]
+        ]
+    )
+    return keyboard
