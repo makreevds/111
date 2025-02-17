@@ -2,25 +2,30 @@ from aiogram import Router
 from aiogram.types import CallbackQuery
 from utils.keyboards import *
 from aiogram.exceptions import TelegramBadRequest
-from handlers.commands import command_descriptions
 from utils.text_utils import *
+from database.database import get_user
+
 router = Router()  # Создаем Router
 
 # Обработчик кнопок основной клавиатуры
-@router.callback_query(lambda c: c.data in ["my_finances", "help", "dummy_2"])
+@router.callback_query(lambda c: c.data in ["my_finances", "help", "my_info"])
 async def main_keyboard_handler(callback: CallbackQuery):
     try:
         if callback.data == "my_finances":
-            text = escape_markdown_v2("*Раздел: Мои финансы*")
-            await callback.message.edit_text(text, parse_mode="MarkdownV2", reply_markup=back_to_main_keybard())
+            text = text_my_finance
         elif callback.data == "help":
-            commands_list = [f"/{cmd} - {desc}" for cmd, desc in command_descriptions.items()]
-            response = escape_markdown_v2("*Список команд*:\n" + "\n".join(commands_list))
-            await callback.message.edit_text(response, parse_mode="MarkdownV2", reply_markup=back_to_main_keybard())
-        elif callback.data == "dummy_2":
-            await callback.message.edit_text("Пустая кнопка 2", reply_markup=main_keyboard())
+            text = text_help
+        elif callback.data == "my_info":
+            # Получаем user_id из callback
+            user_id = callback.from_user.id
+            user_data = get_user(user_id)
+            if user_data:
+                text = text_my_info(user_data)
+            else:
+                text = "❌ Пользователь не найден в базе данных."
+        await callback.message.edit_text(text, parse_mode="MarkdownV2", reply_markup=back_to_main_keyboard())
     except TelegramBadRequest:
-        pass
+        print('Ошибка клавиатуры - 1')
     await callback.answer()
 
 # Обработчик нажатия на кнопку "В главное меню"
