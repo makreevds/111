@@ -2,7 +2,7 @@ import asyncio
 import logging
 from aiogram import Bot, Dispatcher
 
-from config import TOKEN
+from config import TOKEN_TG
 from handlers import callbacks, commands, messages
 from utils.middleware import UserMiddleware
 from database.database import create_db
@@ -19,7 +19,7 @@ async def main():
 
 
     # Инициализация бота и диспетчера
-    bot = Bot(token=TOKEN)
+    bot = Bot(token=TOKEN_TG)
     dp = Dispatcher()
 
     # Создаём таблицу, если её нет

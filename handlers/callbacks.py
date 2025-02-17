@@ -19,10 +19,7 @@ async def main_keyboard_handler(callback: CallbackQuery):
             # Получаем user_id из callback
             user_id = callback.from_user.id
             user_data = get_user(user_id)
-            if user_data:
-                text = text_my_info(user_data)
-            else:
-                text = "❌ Пользователь не найден в базе данных."
+            text = text_my_info(user_data)
         await callback.message.edit_text(text, parse_mode="MarkdownV2", reply_markup=back_to_main_keyboard())
     except TelegramBadRequest:
         print('Ошибка клавиатуры - 1')

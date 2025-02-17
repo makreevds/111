@@ -14,7 +14,8 @@ text_main_menu = escape_markdown_v2(
         "Начни с выбора раздела ниже ⬇️"
     )
 
-text_my_finance = escape_markdown_v2("*Раздел: Мои финансы*")
+text_my_finance = escape_markdown_v2(
+    "*Раздел: Мои финансы*")
 
 text_help = escape_markdown_v2(
     "Если у вас возникли проблемы или вопросы, не стесняйтесь обращаться:\n\n"
