@@ -3,6 +3,7 @@ from aiogram.types import Message
 from aiogram.filters import Command
 from database.database import get_user
 from utils.keyboards import *
+from utils.text_utils import *
 
 router = Router()
 
@@ -16,18 +17,8 @@ command_descriptions = {
 
 @router.message(Command("start"))
 async def start_command(message: Message):
-    await message.answer("Привет! Я твой бот 🚀\nИспользуй /help для списка команд.",
-                         reply_markup=main_keyboard())
+    await message.answer(text_main_menu, reply_markup=main_keyboard(), parse_mode="MarkdownV2")
 
-@router.message(Command("help"))
-async def help_command(message: Message):
-    commands_list = [f"/{cmd} - {desc}" for cmd, desc in command_descriptions.items()]
-    response = "Список команд:\n" + "\n".join(commands_list)
-    await message.answer(response)
-
-@router.message(Command("buttons"))
-async def send_buttons(message: Message):
-    await message.answer("Выбери кнопку:", reply_markup=get_inline_keyboard())
 
 @router.message(Command("info"))
 async def cmd_info(message: types.Message):

@@ -1,10 +1,9 @@
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-def get_inline_keyboard():
+def back_to_main_keybard():
     keyboard = InlineKeyboardMarkup(
         inline_keyboard=[
-            [InlineKeyboardButton(text="Нажми меня", callback_data="button_pressed")],
-            [InlineKeyboardButton(text="GitHub", callback_data="github_button")],
+            [InlineKeyboardButton(text="В главное меню", callback_data="back_to_main")],
         ]
     )
     return keyboard
@@ -13,7 +12,7 @@ def main_keyboard():
     keyboard = InlineKeyboardMarkup(
         inline_keyboard=[
             [InlineKeyboardButton(text="Мои финансы", callback_data="my_finances")],
-            [InlineKeyboardButton(text="пустышка", callback_data="dummy_1")],
+            [InlineKeyboardButton(text="Помощь", callback_data="help")],
             [InlineKeyboardButton(text="пустышка", callback_data="dummy_2")]
         ]
     )
