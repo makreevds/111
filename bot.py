@@ -7,7 +7,7 @@ from handlers import callbacks, commands, messages
 from utils.middleware import UserMiddleware
 from database.database import create_db
 
-# Настройка логирования
+# Настройка логирования!
 logging.basicConfig(
     level=logging.DEBUG,
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
